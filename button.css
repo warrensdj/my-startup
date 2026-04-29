@@ -1,0 +1,18 @@
+.btn-yellow {
+  background-color: #c8f03e;
+  color: #0f0f0f;
+  padding: 14px 28px;
+  border-radius: 4px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.2s, transform 0.2s;
+}
+.btn-yellow:hover {
+  background-color: #e8ff6a;
+  transform: translateY(-2px);
+}

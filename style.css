@@ -1,0 +1,388 @@
+/* ============================================
+   BallCoach — CSS Sportif Moderne
+   Palette : Bleu Marine / Or / Blanc
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap');
+
+/* ── Variables ── */
+:root {
+  --navy:        #0a1628;
+  --navy-mid:    #122040;
+  --navy-light:  #1c3260;
+  --blue-accent: #1e4db7;
+  --gold:        #f5c518;
+  --gold-light:  #ffd94a;
+  --white:       #ffffff;
+  --off-white:   #e8edf5;
+  --gray:        #8a97b0;
+  --card-bg:     #0f1e38;
+  --radius:      12px;
+  --shadow:      0 8px 32px rgba(0, 0, 0, 0.45);
+}
+
+/* ── Reset & Base ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Barlow', sans-serif;
+  background-color: var(--navy);
+  color: var(--white);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── Texture de fond ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 10% 10%, rgba(30, 77, 183, 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 90% 80%, rgba(245, 197, 24, 0.06) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Container ── */
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 24px;
+}
+
+/* ══════════════════════════════════════════
+   BANNER
+══════════════════════════════════════════ */
+.banner {
+  position: relative;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 40%, var(--navy-light) 100%);
+  border-bottom: 3px solid var(--gold);
+  overflow: hidden;
+  padding: 0;
+}
+
+/* Lignes diagonales décoratives */
+.banner::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -80px;
+  width: 420px;
+  height: 420px;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 18px,
+    rgba(30, 77, 183, 0.12) 18px,
+    rgba(30, 77, 183, 0.12) 20px
+  );
+  border-radius: 50%;
+  transform: rotate(-15deg);
+}
+
+/* Arc lumineux */
+.banner::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: -60px;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(245, 197, 24, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.banner .container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 80px 24px 70px;
+}
+
+/* Trait accent avant le titre */
+.banner .container::before {
+  content: '';
+  display: block;
+  width: 56px;
+  height: 5px;
+  background: var(--gold);
+  border-radius: 3px;
+}
+
+.banner h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(3.5rem, 9vw, 7rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: var(--white);
+  /* Effet "découpe" sur la lettre */
+  text-shadow: 4px 4px 0 rgba(30, 77, 183, 0.5);
+  animation: slideInLeft 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.banner h2 {
+  font-family: 'Barlow', sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--off-white);
+  opacity: 0.85;
+  animation: slideInLeft 0.7s 0.15s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ── Bouton CTA ── */
+.btn-yellow {
+  display: inline-block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--navy);
+  background: var(--gold);
+  padding: 14px 36px;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(245, 197, 24, 0.35);
+  animation: slideInLeft 0.7s 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.btn-yellow::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+  transition: left 0.4s;
+}
+
+.btn-yellow:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(245, 197, 24, 0.55);
+}
+
+.btn-yellow:hover::before {
+  left: 100%;
+}
+
+.btn-yellow:active {
+  transform: translateY(-1px);
+}
+
+/* ══════════════════════════════════════════
+   SECTION PROFIL
+══════════════════════════════════════════ */
+.container > h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+
+/* Ligne de séparation sous les titres de section */
+.container > h2::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: var(--gold);
+  margin-top: 8px;
+  border-radius: 2px;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 28px;
+  margin-top: 2px;
+}
+
+/* Avatar circulaire avec bordure or */
+.avatar {
+  display: block;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--gold);
+  box-shadow: 0 0 0 6px rgba(245, 197, 24, 0.12), var(--shadow);
+  margin-bottom: 56px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.avatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 0 8px rgba(245, 197, 24, 0.2), var(--shadow);
+}
+
+/* ══════════════════════════════════════════
+   CARDS — NOS SERVICES
+══════════════════════════════════════════ */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: var(--shadow);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.3s,
+              border-color 0.3s;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Coin accent en or */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 0; height: 0;
+  border-style: solid;
+  border-width: 28px 28px 0 0;
+  border-color: var(--gold) transparent transparent transparent;
+  z-index: 2;
+  transition: border-width 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.55), 0 0 0 1px var(--gold);
+  border-color: rgba(245, 197, 24, 0.4);
+}
+
+.card:hover::before {
+  border-width: 36px 36px 0 0;
+}
+
+.card img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), filter 0.3s;
+  filter: saturate(0.75) brightness(0.85);
+}
+
+.card:hover img {
+  transform: scale(1.07);
+  filter: saturate(1) brightness(0.95);
+}
+
+.card h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--white);
+  padding: 16px 20px 18px;
+  background: linear-gradient(to top, var(--card-bg) 60%, transparent);
+  position: relative;
+}
+
+/* Petit trait or sous le nom de carte */
+.card h3::after {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--gold);
+  margin-top: 6px;
+  border-radius: 1px;
+  transition: width 0.3s;
+}
+
+.card:hover h3::after {
+  width: 48px;
+}
+
+/* ══════════════════════════════════════════
+   ANIMATIONS
+══════════════════════════════════════════ */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Entrée progressive des cards */
+.card:nth-child(1) { animation: fadeUp 0.6s 0.1s both; }
+.card:nth-child(2) { animation: fadeUp 0.6s 0.2s both; }
+.card:nth-child(3) { animation: fadeUp 0.6s 0.3s both; }
+.card:nth-child(4) { animation: fadeUp 0.6s 0.4s both; }
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media (max-width: 640px) {
+  .banner .container {
+    padding: 56px 20px 52px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .card img {
+    height: 130px;
+  }
+
+  .avatar {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+@media (max-width: 400px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
